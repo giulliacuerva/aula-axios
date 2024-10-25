@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Home from 'Pages/Home';
+import Create from 'Pages/Create';
+import Update from 'Pages/Update';
+import Read from 'Pages/Read';
+import Menu from 'Components/Menu';
+import Footer from 'Components/Footer'
+import  Delete from 'Pages/Delete'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+        <BrowserRouter>
+            <Menu/> 
+                <Routes>
 
-export default App;
+                    <Route path='/' element={ <Home /> } />
+                    <Route path='/create' element={ <Create /> } />
+                    <Route path='/update' element={ <Update /> } />
+                    <Route path='/read/:id' element={ <Read /> } />
+                    <Route path='/delete' element={ <Delete /> } />
+
+                </Routes>
+            <Footer/>
+        </BrowserRouter>
+    );
+}
+export default App
